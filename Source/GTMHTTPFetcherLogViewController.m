@@ -124,7 +124,7 @@ static NSString *const kHTTPLogsCell = @"kGTMHTTPLogsCell";
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-  return [logsFolderURLs_ count];
+  return (NSInteger)[logsFolderURLs_ count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -137,7 +137,7 @@ static NSString *const kHTTPLogsCell = @"kGTMHTTPLogsCell";
     [cell.textLabel setAdjustsFontSizeToFitWidth:YES];
   }
 
-  NSURL *url = [logsFolderURLs_ objectAtIndex:indexPath.row];
+  NSURL *url = [logsFolderURLs_ objectAtIndex:(NSUInteger)indexPath.row];
   cell.textLabel.text = [self shortenedNameForURL:url];
 
   return cell;
@@ -147,7 +147,7 @@ static NSString *const kHTTPLogsCell = @"kGTMHTTPLogsCell";
 
 - (void)tableView:(UITableView *)tableView
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSURL *folderURL = [logsFolderURLs_ objectAtIndex:indexPath.row];
+  NSURL *folderURL = [logsFolderURLs_ objectAtIndex:(NSUInteger)indexPath.row];
   NSString *htmlName = [GTMHTTPFetcher htmlFileName];
   NSURL *htmlURL = [folderURL URLByAppendingPathComponent:htmlName];
 
